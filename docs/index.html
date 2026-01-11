@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ООО "ЯДРО" - Монтаж и реконструкция плоских кровель</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+        body{line-height:1.6;color:#333;background-color:#f8f9fa}
+        .container{width:90%;max-width:1200px;margin:0 auto;padding:0 20px}
+        section{padding:60px 0}
+        h1,h2,h3,h4{margin-bottom:1rem;color:#2c3e50}
+        h1{font-size:2.8rem;line-height:1.2}
+        h2{font-size:2.2rem;text-align:center;position:relative;padding-bottom:15px}
+        h2::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:80px;height:4px;background:#3498db}
+        p{margin-bottom:1rem;font-size:1.1rem}
+        .btn{display:inline-block;background:linear-gradient(to right,#2980b9,#3498db);color:white;padding:15px 35px;border:none;border-radius:5px;cursor:pointer;text-decoration:none;font-size:1.1rem;font-weight:600;transition:all 0.3s ease;box-shadow:0 4px 10px rgba(41,128,185,0.3)}
+        .btn:hover{background:linear-gradient(to right,#1c5a7a,#2980b9);transform:translateY(-3px);box-shadow:0 6px 15px rgba(41,128,185,0.4)}
+        header{background-color:white;box-shadow:0 2px 10px rgba(0,0,0,0.08);position:sticky;top:0;z-index:1000}
+        .header-container{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+        .logo{font-size:1.8rem;font-weight:800;color:#2c3e50}
+        .logo span{color:#3498db}
+        .logo-sub{font-size:0.9rem;color:#7f8c8d;font-weight:normal}
+        .header-phone{font-size:1.3rem;font-weight:700;color:#2c3e50;text-decoration:none}
+        .hero{background:linear-gradient(rgba(44,62,80,0.85),rgba(44,62,80,0.9)),url('https://images.unsplash.com/photo-1503386435952-d7918b99d4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80');background-size:cover;background-position:center;color:white;text-align:center;padding:100px 0}
+        .hero h1,.hero p{color:white;max-width:800px;margin:0 auto 30px}
+        .advantages-grid,.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:40px}
+        .advantage-card{background:white;padding:30px;border-radius:10px;text-align:center;box-shadow:0 5px 20px rgba(0,0,0,0.05);transition:transform 0.3s ease}
+        .advantage-card:hover{transform:translateY(-10px)}
+        .advantage-icon{font-size:3rem;color:#3498db;margin-bottom:20px}
+        .service-card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,0.08)}
+        .service-img{height:200px;background-color:#ddd;background-size:cover;background-position:center}
+        #montage-img{background-image:url('https://images.unsplash.com/photo-1545324412-8189d8d3e5ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80')}
+        #reconstruction-img{background-image:url('https://images.unsplash.com/photo-1503386435952-d7918b99d4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=50')}
+        .service-content{padding:25px}
+        .gallery-section{background-color:#f8f9fa}
+        .address-gallery{margin-bottom:60px}
+        .address-title{text-align:left;padding-bottom:10px;margin-bottom:20px;border-bottom:2px solid #3498db}
+        .address-title::after{display:none}
+        .carousel-container{position:relative;max-width:100%;margin:0 auto;overflow:hidden;border-radius:10px;box-shadow:0 5px 20px rgba(0,0,0,0.1)}
+        .carousel-track{display:flex;transition:transform 0.5s ease-in-out}
+        .carousel-slide{min-width:100%;display:flex;justify-content:center;align-items:center;background-color:#fff;padding:20px}
+        .carousel-media{max-width:100%;max-height:500px;width:auto;height:auto;object-fit:contain;border-radius:8px;cursor:pointer;transition:transform 0.3s ease}
+        .carousel-media:hover{transform:scale(1.02)}
+        video.carousel-media{background:#000}
+        .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background-color:rgba(52,152,219,0.8);color:white;border:none;width:50px;height:50px;border-radius:50%;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease;z-index:10}
+        .carousel-btn:hover{background-color:rgba(41,128,185,0.9);transform:translateY(-50%) scale(1.1)}
+        .carousel-btn.prev{left:15px}
+        .carousel-btn.next{right:15px}
+        .carousel-dots{display:flex;justify-content:center;padding:20px 0;gap:10px}
+        .carousel-dot{width:12px;height:12px;border-radius:50%;background-color:#bdc3c7;border:none;cursor:pointer;transition:background-color 0.3s ease}
+        .carousel-dot.active{background-color:#3498db}
+        .image-counter{position:absolute;bottom:15px;right:15px;background-color:rgba(0,0,0,0.6);color:white;padding:5px 12px;border-radius:20px;font-size:0.9rem;z-index:5}
+        .fullscreen-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,0.95);z-index:2000;justify-content:center;align-items:center;flex-direction:column}
+        .fullscreen-overlay.active{display:flex}
+        .fullscreen-media-container{position:relative;width:90%;height:90%;display:flex;justify-content:center;align-items:center}
+        .fullscreen-media{max-width:100%;max-height:100%;object-fit:contain;transition:transform 0.3s ease}
+        .fullscreen-media.rotated{transform:rotate(90deg)}
+        .fullscreen-controls{position:absolute;top:20px;right:20px;display:flex;gap:15px;z-index:2001}
+        .fullscreen-btn{background-color:rgba(255,255,255,0.2);color:white;border:none;width:50px;height:50px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease}
+        .fullscreen-btn:hover{background-color:rgba(255,255,255,0.3);transform:scale(1.1)}
+        .fullscreen-counter{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:white;font-size:1.2rem;background-color:rgba(0,0,0,0.5);padding:10px 20px;border-radius:20px}
+        .fullscreen-nav{position:absolute;top:50%;transform:translateY(-50%);width:100%;display:flex;justify-content:space-between;padding:0 30px;z-index:2001}
+        .fullscreen-nav-btn{background-color:rgba(255,255,255,0.2);color:white;border:none;width:60px;height:60px;border-radius:50%;font-size:1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s ease}
+        .fullscreen-nav-btn:hover{background-color:rgba(255,255,255,0.3);transform:scale(1.1)}
+        .contact-section{background-color:#ecf0f1}
+        .contact-wrapper{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:50px;align-items:start;margin-top:40px}
+        .contact-list{list-style:none;margin-top:20px}
+        .contact-list li{margin-bottom:20px;display:flex;align-items:center}
+        .contact-icon{background:#3498db;color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:15px;font-size:1.1rem}
+        .contact-form{background:white;padding:30px;border-radius:10px;box-shadow:0 10px 25px rgba(0,0,0,0.06)}
+        .form-group{margin-bottom:20px}
+        .form-group label{display:block;margin-bottom:8px;font-weight:600}
+        .form-control{width:100%;padding:14px;border:1px solid #ddd;border-radius:5px;font-size:1rem}
+        .rekvizity-section{background-color:white;border-top:1px solid #eee;border-bottom:1px solid #eee}
+        .rekvizity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;max-width:1000px;margin:0 auto}
+        .rekvizity-column ul{list-style:none}
+        .rekvizity-column li{margin-bottom:12px;padding-bottom:12px;border-bottom:1px dashed #ecf0f1;font-size:0.95rem;line-height:1.5}
+        .rekvizity-column strong{color:#2c3e50;display:block;margin-bottom:3px}
+        footer{background-color:#2c3e50;color:#ecf0f1;padding:40px 0 20px;text-align:center}
+        .footer-logo{font-size:2rem;font-weight:800;margin-bottom:10px;color:white}
+        .copyright{margin-top:30px;padding-top:20px;border-top:1px solid #4a6278;font-size:0.9rem;color:#bdc3c7}
+        @media (max-width:768px){h1{font-size:2.2rem}h2{font-size:1.8rem}.header-container{flex-direction:column;text-align:center;gap:15px}.hero{padding:70px 0}section{padding:40px 0}.carousel-media{max-height:350px}.carousel-btn{width:40px;height:40px;font-size:1.2rem}.carousel-btn.prev{left:10px}.carousel-btn.next{right:10px}.fullscreen-controls{top:10px;right:10px}.fullscreen-btn{width:40px;height:40px;font-size:1rem}.fullscreen-nav{padding:0 15px}.fullscreen-nav-btn{width:50px;height:50px;font-size:1.2rem}}
+        @media (max-width:480px){.carousel-media{max-height:250px}.image-counter{font-size:0.8rem;padding:3px 8px;bottom:10px;right:10px}.fullscreen-nav-btn{width:40px;height:40px;font-size:1rem}}
+        @media (orientation:landscape){.fullscreen-media-container{width:95%;height:85%}}
+    </style>
+</head>
+<body>
+<header>
+    <div class="container header-container">
+        <div class="logo">ООО "<span>ЯДРО</span>"
+            <div class="logo-sub">Плоские кровли</div>
+        </div>
+        <a href="tel:+79308378190" class="header-phone"><i class="fas fa-phone"></i> +7 (930) 837-81-90</a>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Надёжные плоские кровли от российских специалистов</h1>
+        <p>Полный цикл работ: комплектация объектов материалами, монтаж, гарантия.</p>
+        <a href="#contact-form" class="btn">Получить бесплатный расчёт</a>
+    </div>
+</section>
+
+<section class="container">
+    <h2>Наши преимущества</h2>
+    <div class="advantages-grid">
+        <div class="advantage-card">
+            <div class="advantage-icon"><i class="fas fa-users"></i></div>
+            <h3>Опытная команда</h3>
+            <p>Все наши специалисты — граждане РФ с многолетним опытом работы. Мы работаем строго по технологии и несём ответственность за каждый объект.</p>
+        </div>
+        <div class="advantage-card">
+            <div class="advantage-icon"><i class="fas fa-clipboard-check"></i></div>
+            <h3>Работа «под ключ»</h3>
+            <p>Полная комплектация объекта всеми необходимыми материалами. Мы контролируем сроки и качество на всех этапах, избавляя вас от лишних хлопот.</p>
+        </div>
+        <div class="advantage-card">
+            <div class="advantage-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Гарантия результата</h3>
+            <p>Делаем монтаж и реконструкцию кровель с гарантией. Чёткое планирование и прозрачная смета без скрытых работ и расходов.</p>
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <h2>Наши услуги</h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-img" id="montage-img"></div>
+            <div class="service-content">
+                <h3>Монтаж плоских кровель</h3>
+                <p>Устройство новых кровель из современных материалов (ПВХ-мембраны, наплавляемые материалы, ТПО). Полный комплекс работ от подготовки основания до финишных операций.</p>
+            </div>
+        </div>
+        <div class="service-card">
+            <div class="service-img" id="reconstruction-img"></div>
+            <div class="service-content">
+                <h3>Реконструкция кровель</h3>
+                <p>Капитальный ремонт и восстановление старых кровель. Демонтаж изношенного покрытия, ремонт основания и укладка нового, долговечного материала с восстановлением всех функций.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="gallery-section container" id="gallery-section">
+    <h2>Примеры наших работ</h2>
+</section>
+
+<div class="fullscreen-overlay" id="fullscreenOverlay">
+    <div class="fullscreen-controls">
+        <button class="fullscreen-btn" id="rotateBtn" title="Повернуть"><i class="fas fa-redo"></i></button>
+        <button class="fullscreen-btn" id="closeFullscreenBtn" title="Закрыть"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="fullscreen-nav">
+        <button class="fullscreen-nav-btn" id="prevFullscreenBtn"><i class="fas fa-chevron-left"></i></button>
+        <button class="fullscreen-nav-btn" id="nextFullscreenBtn"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="fullscreen-media-container">
+        <div class="fullscreen-counter" id="fullscreenCounter"></div>
+    </div>
+</div>
+
+<section class="contact-section" id="contact-form">
+    <div class="container">
+        <h2>Свяжитесь с нами</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Контакты ООО "ЯДРО"</h3>
+                <p>Готовы ответить на ваши вопросы и рассчитать стоимость работ для вашего объекта.</p>
+                <ul class="contact-list">
+                    <li>
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div><strong>Телефон</strong><br><a href="tel:+79308378190">+7 (930) 837-81-90</a></div>
+                    </li>
+                    <li>
+                        <div class="contact-icon"><i class="fab fa-telegram"></i></div>
+                        <div><strong>Telegram</strong><br><a href="https://t.me/Razakovruslan1" target="_blank">@Razakovruslan1</a></div>
+                    </li>
+                    <li>
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div><strong>Email</strong><br><a href="mailto:razakov2006@mail.ru">razakov2006@mail.ru</a></div>
+                    </li>
+                </ul>
+                <p><em>Работаем по Москве и области. Возможен выезд в регионы.</em></p>
+            </div>
+            <div class="contact-form">
+                <h3>Заявка на расчёт</h3>
+                <form id="mainForm">
+                    <div class="form-group">
+                        <label for="name">Ваше имя *</label>
+                        <input type="text" id="name" class="form-control" required placeholder="Иван Иванов">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон *</label>
+                        <input type="tel" id="phone" class="form-control" required placeholder="+7 (999) 123-45-67">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Опишите задачу</label>
+                        <textarea id="message" class="form-control" rows="4" placeholder="Например: монтаж новой плоской кровли на здании 500 м²..."></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width:100%">Отправить заявку</button>
+                    <p style="font-size:0.8rem;margin-top:10px;color:#777">Отправляя данные, вы соглашаетесь с политикой конфиденциальности.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="rekvizity-section">
+    <div class="container">
+        <h2>Реквизиты компании</h2>
+        <div class="rekvizity-grid">
+            <div class="rekvizity-column">
+                <ul>
+                    <li><strong>Наименование:</strong> ООО "ЯДРО"</li>
+                    <li><strong>ИНН:</strong> 3300026171</li>
+                    <li><strong>КПП:</strong> 330001001</li>
+                    <li><strong>ОГРН:</strong> 1253300007168</li>
+                </ul>
+            </div>
+            <div class="rekvizity-column">
+                <ul>
+                    <li><strong>Расчётный счёт:</strong> 40702810510710000987</li>
+                    <li><strong>Банк:</strong> ВЛАДИМИРСКОЕ ОТДЕЛЕНИЕ №8611 ПАО СБЕРБАНК</li>
+                    <li><strong>БИК банка:</strong> 041708602</li>
+                    <li><strong>Корр. счёт:</strong> 30101810000000000602</li>
+                </ul>
+            </div>
+            <div class="rekvizity-column">
+                <ul>
+                    <li><strong>ИНН банка:</strong> 7707083893</li>
+                    <li><strong>КПП банка:</strong> 332802001</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-logo">ЯДРО</div>
+        <p>Монтаж и реконструкция плоских кровель с гарантией качества.</p>
+        <div class="copyright">
+            © <span id="currentYear"></span> ООО "ЯДРО". Все права защищены.
+        </div>
+    </div>
+</footer>
+
+<script>
+    // JSON данные объектов
+    const projectsData = {
+        "objects": [
+            {
+                "id": 1,
+                "title": "Объект 1",
+                "media": [
+                    {"type": "image", "src": "image1.jpg"},
+                    {"type": "image", "src": "image2.jpg"}
+                ]
+            },
+            {
+                "id": 2,
+                "title": "Объект 2",
+                "media": [
+                    {"type": "image", "src": "image3.jpg"},
+                    {"type": "image", "src": "image4.jpg"},
+                    {"type": "image", "src": "image5.jpg"},
+                    {"type": "image", "src": "image6.jpg"},
+                    {"type": "image", "src": "image7.jpg"}
+                ]
+            },
+            {
+                "id": 3,
+                "title": "Объект 3",
+                "media": [
+                    {"type": "image", "src": "image8.jpg"},
+                    {"type": "image", "src": "image9.jpg"},
+                    {"type": "image", "src": "image10.jpg"}
+                ]
+            },
+            {
+                "id": 4,
+                "title": "г. Владимир, улица Станционная, Земельный участок 32",
+                "media": [
+                    {"type": "image", "src": "image11.jpg"},
+                    {"type": "image", "src": "image12.jpg"}
+                ]
+            },
+            {
+                "id": 5,
+                "title": "Г. Ладан, ул. Станционная, з/у 28",
+                "media": [
+                    {"type": "video", "src": "video1.mp4"}
+                ]
+            }
+        ]
+    };
+
+    let currentFullscreenObject = null;
+    let currentFullscreenIndex = 0;
+    let isRotated = false;
+
+    function generateGalleryHTML() {
+        const gallerySection = document.getElementById('gallery-section');
+        const galleryContainer = document.createElement('div');
+        galleryContainer.id = 'gallery-container';
+
+        projectsData.objects.forEach((project, index) => {
+            const galleryId = index + 1;
+            const addressGallery = document.createElement('div');
+            addressGallery.className = 'address-gallery';
+
+            const addressTitle = document.createElement('h3');
+            addressTitle.className = 'address-title';
+            addressTitle.textContent = project.title;
+            addressGallery.appendChild(addressTitle);
+
+            const carouselContainer = document.createElement('div');
+            carouselContainer.className = 'carousel-container';
+            carouselContainer.id = `carousel${galleryId}`;
+            carouselContainer.setAttribute('data-object', galleryId);
+
+            const carouselTrack = document.createElement('div');
+            carouselTrack.className = 'carousel-track';
+
+            project.media.forEach((mediaItem, mediaIndex) => {
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+
+                let mediaElement;
+                if (mediaItem.type === 'video') {
+                    mediaElement = document.createElement('video');
+                    mediaElement.className = 'carousel-media';
+                    mediaElement.src = mediaItem.src;
+                    mediaElement.controls = true;
+                } else {
+                    mediaElement = document.createElement('img');
+                    mediaElement.className = 'carousel-media';
+                    mediaElement.src = mediaItem.src;
+                }
+
+                mediaElement.alt = `${project.title} - ${mediaIndex + 1}`;
+                mediaElement.setAttribute('data-object', galleryId);
+                mediaElement.setAttribute('data-index', mediaIndex);
+
+                const counter = document.createElement('div');
+                counter.className = 'image-counter';
+                counter.textContent = `${mediaIndex + 1} / ${project.media.length}`;
+
+                slide.appendChild(mediaElement);
+                slide.appendChild(counter);
+                carouselTrack.appendChild(slide);
+            });
+
+            carouselContainer.appendChild(carouselTrack);
+
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'carousel-btn prev';
+            prevBtn.innerHTML = '‹';
+
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'carousel-btn next';
+            nextBtn.innerHTML = '›';
+
+            carouselContainer.appendChild(prevBtn);
+            carouselContainer.appendChild(nextBtn);
+
+            const dotsContainer = document.createElement('div');
+            dotsContainer.className = 'carousel-dots';
+            dotsContainer.id = `dots${galleryId}`;
+
+            project.media.forEach((_, dotIndex) => {
+                const dot = document.createElement('button');
+                dot.className = `carousel-dot ${dotIndex === 0 ? 'active' : ''}`;
+                dot.setAttribute('data-slide', dotIndex);
+                dotsContainer.appendChild(dot);
+            });
+
+            carouselContainer.appendChild(dotsContainer);
+            addressGallery.appendChild(carouselContainer);
+            galleryContainer.appendChild(addressGallery);
+        });
+
+        const h2 = gallerySection.querySelector('h2');
+        h2.insertAdjacentElement('afterend', galleryContainer);
+    }
+
+    function initCarousels() {
+        projectsData.objects.forEach((project, index) => {
+            const carouselId = index + 1;
+            const carousel = document.getElementById(`carousel${carouselId}`);
+
+            if (!carousel) return;
+
+            const track = carousel.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const prevBtn = carousel.querySelector('.carousel-btn.prev');
+            const nextBtn = carousel.querySelector('.carousel-btn.next');
+            const dotsContainer = carousel.querySelector('.carousel-dots');
+            const dots = Array.from(dotsContainer.querySelectorAll('.carousel-dot'));
+            const counter = carousel.querySelectorAll('.image-counter');
+
+            let currentSlide = 0;
+
+            const moveToSlide = (index) => {
+                track.style.transform = `translateX(-${100 * index}%)`;
+                currentSlide = index;
+
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+
+                counter.forEach((cnt, i) => {
+                    cnt.textContent = `${i === index ? index + 1 : i + 1} / ${project.media.length}`;
+                });
+            };
+
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide === 0) {
+                    moveToSlide(slides.length - 1);
+                } else {
+                    moveToSlide(currentSlide - 1);
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide === slides.length - 1) {
+                    moveToSlide(0);
+                } else {
+                    moveToSlide(currentSlide + 1);
+                }
+            });
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', (e) => {
+                    const slideIndex = parseInt(e.target.dataset.slide);
+                    moveToSlide(slideIndex);
+                });
+            });
+
+            slides.forEach((slide, index) => {
+                const media = slide.querySelector('.carousel-media');
+                media.addEventListener('click', () => {
+                    openFullscreen(carouselId, index);
+                });
+            });
+        });
+    }
+
+    function openFullscreen(objectId, mediaIndex) {
+        currentFullscreenObject = objectId;
+        currentFullscreenIndex = mediaIndex;
+        isRotated = false;
+
+        updateFullscreenMedia();
+        document.getElementById('fullscreenOverlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        checkOrientationAndRotate();
+    }
+
+    function updateFullscreenMedia() {
+        const object = projectsData.objects[currentFullscreenObject - 1];
+        const mediaItem = object.media[currentFullscreenIndex];
+        const container = document.querySelector('.fullscreen-media-container');
+
+        container.innerHTML = '<div class="fullscreen-counter" id="fullscreenCounter"></div>';
+
+        let mediaElement;
+        if (mediaItem.type === 'video') {
+            mediaElement = document.createElement('video');
+            mediaElement.src = mediaItem.src;
+            mediaElement.controls = true;
+            mediaElement.autoplay = true;
+        } else {
+            mediaElement = document.createElement('img');
+            mediaElement.src = mediaItem.src;
+        }
+
+        mediaElement.className = 'fullscreen-media';
+        mediaElement.alt = `${object.title} - ${currentFullscreenIndex + 1}`;
+
+        if (isRotated) {
+            mediaElement.classList.add('rotated');
+        }
+
+        container.insertBefore(mediaElement, container.firstChild);
+        document.getElementById('fullscreenCounter').textContent =
+            `${currentFullscreenIndex + 1} / ${object.media.length}`;
+    }
+
+    function closeFullscreen() {
+        document.getElementById('fullscreenOverlay').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    function nextFullscreenMedia() {
+        const object = projectsData.objects[currentFullscreenObject - 1];
+        currentFullscreenIndex = (currentFullscreenIndex + 1) % object.media.length;
+        isRotated = false;
+        updateFullscreenMedia();
+        checkOrientationAndRotate();
+    }
+
+    function prevFullscreenMedia() {
+        const object = projectsData.objects[currentFullscreenObject - 1];
+        currentFullscreenIndex = (currentFullscreenIndex - 1 + object.media.length) % object.media.length;
+        isRotated = false;
+        updateFullscreenMedia();
+        checkOrientationAndRotate();
+    }
+
+    function checkOrientationAndRotate() {
+        const media = document.querySelector('.fullscreen-media');
+        if (media && media.tagName === 'IMG' && window.matchMedia("(orientation: landscape)").matches) {
+            const img = new Image();
+            img.src = media.src;
+            img.onload = function() {
+                if (img.height > img.width) {
+                    isRotated = true;
+                    media.classList.add('rotated');
+                }
+            };
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        generateGalleryHTML();
+        initCarousels();
+
+        document.getElementById('mainForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время для расчёта.');
+            this.reset();
+        });
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        document.getElementById('closeFullscreenBtn').addEventListener('click', closeFullscreen);
+        document.getElementById('prevFullscreenBtn').addEventListener('click', prevFullscreenMedia);
+        document.getElementById('nextFullscreenBtn').addEventListener('click', nextFullscreenMedia);
+        document.getElementById('rotateBtn').addEventListener('click', function() {
+            const media = document.querySelector('.fullscreen-media');
+            if (media && media.tagName === 'IMG') {
+                isRotated = !isRotated;
+                if (isRotated) {
+                    media.classList.add('rotated');
+                } else {
+                    media.classList.remove('rotated');
+                }
+            }
+        });
+
+        document.getElementById('fullscreenOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeFullscreen();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && document.getElementById('fullscreenOverlay').classList.contains('active')) {
+                closeFullscreen();
+            }
+            if (e.key === 'ArrowLeft' && document.getElementById('fullscreenOverlay').classList.contains('active')) {
+                prevFullscreenMedia();
+            }
+            if (e.key === 'ArrowRight' && document.getElementById('fullscreenOverlay').classList.contains('active')) {
+                nextFullscreenMedia();
+            }
+        });
+
+        window.addEventListener('orientationchange', checkOrientationAndRotate);
+        window.addEventListener('resize', checkOrientationAndRotate);
+    });
+</script>
+</body>
+</html>
