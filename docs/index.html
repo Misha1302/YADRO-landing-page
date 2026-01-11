@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ООО "ЯДРО" - Монтаж и реконструкция плоских кровель</title>
+    <title>ООО "ЯДРО" - Плоские кровли</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
@@ -25,15 +25,10 @@
         .header-phone{font-size:1.3rem;font-weight:700;color:#2c3e50;text-decoration:none}
         .hero{background:linear-gradient(rgba(44,62,80,0.85),rgba(44,62,80,0.9)),url('https://images.unsplash.com/photo-1503386435952-d7918b99d4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80');background-size:cover;background-position:center;color:white;text-align:center;padding:100px 0}
         .hero h1,.hero p{color:white;max-width:800px;margin:0 auto 30px}
-        .advantages-grid,.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:40px}
+        .advantages-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:40px}
         .advantage-card{background:white;padding:30px;border-radius:10px;text-align:center;box-shadow:0 5px 20px rgba(0,0,0,0.05);transition:transform 0.3s ease}
         .advantage-card:hover{transform:translateY(-10px)}
         .advantage-icon{font-size:3rem;color:#3498db;margin-bottom:20px}
-        .service-card{background:white;border-radius:10px;overflow:hidden;box-shadow:0 5px 20px rgba(0,0,0,0.08)}
-        .service-img{height:200px;background-color:#ddd;background-size:cover;background-position:center}
-        #montage-img{background-image:url('https://images.unsplash.com/photo-1545324412-8189d8d3e5ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80')}
-        #reconstruction-img{background-image:url('https://images.unsplash.com/photo-1503386435952-d7918b99d4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=50')}
-        .service-content{padding:25px}
         .gallery-section{background-color:#f8f9fa}
         .address-gallery{margin-bottom:60px}
         .address-title{text-align:left;padding-bottom:10px;margin-bottom:20px;border-bottom:2px solid #3498db}
@@ -69,10 +64,6 @@
         .contact-list{list-style:none;margin-top:20px}
         .contact-list li{margin-bottom:20px;display:flex;align-items:center}
         .contact-icon{background:#3498db;color:white;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-right:15px;font-size:1.1rem}
-        .contact-form{background:white;padding:30px;border-radius:10px;box-shadow:0 10px 25px rgba(0,0,0,0.06)}
-        .form-group{margin-bottom:20px}
-        .form-group label{display:block;margin-bottom:8px;font-weight:600}
-        .form-control{width:100%;padding:14px;border:1px solid #ddd;border-radius:5px;font-size:1rem}
         .rekvizity-section{background-color:white;border-top:1px solid #eee;border-bottom:1px solid #eee}
         .rekvizity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;max-width:1000px;margin:0 auto}
         .rekvizity-column ul{list-style:none}
@@ -100,7 +91,7 @@
     <div class="container">
         <h1>Надёжные плоские кровли от российских специалистов</h1>
         <p>Полный цикл работ: комплектация объектов материалами, монтаж, гарантия.</p>
-        <a href="#contact-form" class="btn">Получить бесплатный расчёт</a>
+        <a href="#contact" class="btn">Связаться с нами</a>
     </div>
 </section>
 
@@ -125,26 +116,6 @@
     </div>
 </section>
 
-<section class="container">
-    <h2>Наши услуги</h2>
-    <div class="services-grid">
-        <div class="service-card">
-            <div class="service-img" id="montage-img"></div>
-            <div class="service-content">
-                <h3>Монтаж плоских кровель</h3>
-                <p>Устройство новых кровель из современных материалов (ПВХ-мембраны, наплавляемые материалы, ТПО). Полный комплекс работ от подготовки основания до финишных операций.</p>
-            </div>
-        </div>
-        <div class="service-card">
-            <div class="service-img" id="reconstruction-img"></div>
-            <div class="service-content">
-                <h3>Реконструкция кровель</h3>
-                <p>Капитальный ремонт и восстановление старых кровель. Демонтаж изношенного покрытия, ремонт основания и укладка нового, долговечного материала с восстановлением всех функций.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="gallery-section container" id="gallery-section">
     <h2>Примеры наших работ</h2>
 </section>
@@ -163,7 +134,7 @@
     </div>
 </div>
 
-<section class="contact-section" id="contact-form">
+<section class="contact-section" id="contact">
     <div class="container">
         <h2>Свяжитесь с нами</h2>
         <div class="contact-wrapper">
@@ -184,26 +155,6 @@
                         <div><strong>Email</strong><br><a href="mailto:razakov2006@mail.ru">razakov2006@mail.ru</a></div>
                     </li>
                 </ul>
-                <p><em>Работаем по Москве и области. Возможен выезд в регионы.</em></p>
-            </div>
-            <div class="contact-form">
-                <h3>Заявка на расчёт</h3>
-                <form id="mainForm">
-                    <div class="form-group">
-                        <label for="name">Ваше имя *</label>
-                        <input type="text" id="name" class="form-control" required placeholder="Иван Иванов">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Телефон *</label>
-                        <input type="tel" id="phone" class="form-control" required placeholder="+7 (999) 123-45-67">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Опишите задачу</label>
-                        <textarea id="message" class="form-control" rows="4" placeholder="Например: монтаж новой плоской кровли на здании 500 м²..."></textarea>
-                    </div>
-                    <button type="submit" class="btn" style="width:100%">Отправить заявку</button>
-                    <p style="font-size:0.8rem;margin-top:10px;color:#777">Отправляя данные, вы соглашаетесь с политикой конфиденциальности.</p>
-                </form>
             </div>
         </div>
     </div>
@@ -255,7 +206,7 @@
         "objects": [
             {
                 "id": 1,
-                "title": "Объект 1",
+                "title": "г. Владимир, улица Станционная",
                 "media": [
                     {"type": "image", "src": "image1.jpg"},
                     {"type": "image", "src": "image2.jpg"}
@@ -263,7 +214,7 @@
             },
             {
                 "id": 2,
-                "title": "Объект 2",
+                "title": "г. Владимир, улица Станционная, д. 32, корпус 1",
                 "media": [
                     {"type": "image", "src": "image3.jpg"},
                     {"type": "image", "src": "image4.jpg"},
@@ -274,7 +225,7 @@
             },
             {
                 "id": 3,
-                "title": "Объект 3",
+                "title": "г. Владимир, улица Станционная, з/у 30",
                 "media": [
                     {"type": "image", "src": "image8.jpg"},
                     {"type": "image", "src": "image9.jpg"},
@@ -283,7 +234,7 @@
             },
             {
                 "id": 4,
-                "title": "г. Владимир, улица Станционная, Земельный участок 32",
+                "title": "г. Владимир, улица Станционная, з/у 32",
                 "media": [
                     {"type": "image", "src": "image11.jpg"},
                     {"type": "image", "src": "image12.jpg"}
@@ -529,12 +480,6 @@
     document.addEventListener('DOMContentLoaded', function() {
         generateGalleryHTML();
         initCarousels();
-
-        document.getElementById('mainForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('Спасибо за заявку! Мы свяжемся с вами в ближайшее время для расчёта.');
-            this.reset();
-        });
 
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
